@@ -1,7 +1,7 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/tipihbekdsbk551f?svg=true)](https://ci.appveyor.com/project/FecklaSveckla/carddelivery)
+
 # CardDelivery
 Домашнее задание к занятию «2.2. Selenide»
-
-[![Build status](https://ci.appveyor.com/api/projects/status/tipihbekdsbk551f?svg=true)](https://ci.appveyor.com/project/FecklaSveckla/carddelivery)
 
 Вам необходимо автоматизировать тестирование формы заказа доставки карты:
 

@@ -15,8 +15,8 @@ import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.$;
 
 public class CardDeliveryNegetiveTests {
-
-    public String generateDate = LocalDate.now().plusDays( 4 ).format( DateTimeFormatter.ofPattern( "dd.MM.yyyy" ) );
+    int days = 4;
+    MeetingData meetingData = new MeetingData();
 
     @BeforeEach
     void setUp() {
@@ -31,7 +31,7 @@ public class CardDeliveryNegetiveTests {
 
         $x( "//input[@placeholder='Город']" ).setValue( "Moscow" );
         $x( "//input[@placeholder='Дата встречи']" ).doubleClick().sendKeys( Keys.BACK_SPACE );
-        $x( "//input[@placeholder='Дата встречи']" ).setValue( generateDate );
+        $x( "//input[@placeholder='Дата встречи']" ).setValue( meetingData.generateDate( days ) );
         $( "[data-test-id='name'] input" ).setValue( "Иванов Иван" );
         $( "[data-test-id='phone'] input" ).setValue( "+79261234567" );
         $( "[data-test-id='agreement']" ).click();
@@ -44,7 +44,7 @@ public class CardDeliveryNegetiveTests {
     public void EmptyCity() {
 
         $x( "//input[@placeholder='Дата встречи']" ).doubleClick().sendKeys( Keys.BACK_SPACE );
-        $x( "//input[@placeholder='Дата встречи']" ).setValue( generateDate );
+        $x( "//input[@placeholder='Дата встречи']" ).setValue( meetingData.generateDate( days ) );
         $( "[data-test-id='name'] input" ).setValue( "Иванов Иван" );
         $( "[data-test-id='phone'] input" ).setValue( "+79261234567" );
         $( "[data-test-id='agreement']" ).click();
@@ -73,7 +73,7 @@ public class CardDeliveryNegetiveTests {
 
         $x( "//input[@placeholder='Город']" ).setValue( "Москва" );
         $x( "//input[@placeholder='Дата встречи']" ).doubleClick().sendKeys( Keys.BACK_SPACE );
-        $x( "//input[@placeholder='Дата встречи']" ).setValue( generateDate );
+        $x( "//input[@placeholder='Дата встречи']" ).setValue( meetingData.generateDate( days ) );
         $( "[data-test-id='phone'] input" ).setValue( "+79261234567" );
         $( "[data-test-id='agreement']" ).click();
         $x( "//*[text()='Забронировать']" ).click();
@@ -85,7 +85,7 @@ public class CardDeliveryNegetiveTests {
 
         $x( "//input[@placeholder='Город']" ).setValue( "Москва");
         $x( "//input[@placeholder='Дата встречи']" ).doubleClick().sendKeys( Keys.BACK_SPACE );
-        $x( "//input[@placeholder='Дата встречи']" ).setValue( generateDate );
+        $x( "//input[@placeholder='Дата встречи']" ).setValue( meetingData.generateDate( days ) );
         $( "[data-test-id='name'] input" ).setValue( "Иванов Иван" );
         $( "[data-test-id='agreement']" ).click();
         $x( "//*[text()='Забронировать']" ).click();
@@ -98,7 +98,7 @@ public class CardDeliveryNegetiveTests {
 
         $x( "//input[@placeholder='Город']" ).setValue( "Москва" );
         $x( "//input[@placeholder='Дата встречи']" ).doubleClick().sendKeys( Keys.BACK_SPACE );
-        $x( "//input[@placeholder='Дата встречи']" ).setValue( generateDate );
+        $x( "//input[@placeholder='Дата встречи']" ).setValue( meetingData.generateDate( days ) );
         $( "[data-test-id='name'] input" ).setValue( "Иванов Иван" );
         $( "[data-test-id='phone'] input" ).setValue( "+79261234567" );
         $x( "//*[text()='Забронировать']" ).click();
@@ -112,7 +112,7 @@ public class CardDeliveryNegetiveTests {
 
         $x( "//input[@placeholder='Город']" ).setValue( "Москва" );
         $x( "//input[@placeholder='Дата встречи']" ).doubleClick().sendKeys( Keys.BACK_SPACE );
-        $x( "//input[@placeholder='Дата встречи']" ).setValue( generateDate );
+        $x( "//input[@placeholder='Дата встречи']" ).setValue(meetingData.generateDate( days ) );
         $( "[data-test-id='name'] input" ).setValue( "123456" );
         $( "[data-test-id='phone'] input" ).setValue( "+79261234567" );
         $( "[data-test-id='agreement']" ).click();
@@ -126,7 +126,7 @@ public class CardDeliveryNegetiveTests {
 
         $x( "//input[@placeholder='Город']" ).setValue( "Москва" );
         $x( "//input[@placeholder='Дата встречи']" ).doubleClick().sendKeys( Keys.BACK_SPACE );
-        $x( "//input[@placeholder='Дата встречи']" ).setValue( generateDate );
+        $x( "//input[@placeholder='Дата встречи']" ).setValue( meetingData.generateDate( days ) );
         $( "[data-test-id='name'] input" ).setValue( "Иванов Иван" );
         $( "[data-test-id='phone'] input" ).setValue( "79261234567" );
         $( "[data-test-id='agreement']" ).click();
@@ -140,7 +140,7 @@ public class CardDeliveryNegetiveTests {
 
         $x( "//input[@placeholder='Город']" ).setValue( "Москва" );
         $x( "//input[@placeholder='Дата встречи']" ).doubleClick().sendKeys( Keys.BACK_SPACE );
-        $x( "//input[@placeholder='Дата встречи']" ).setValue( generateDate );
+        $x( "//input[@placeholder='Дата встречи']" ).setValue( meetingData.generateDate( days ) );
         $( "[data-test-id='name'] input" ).setValue( "Иванов Иван" );
         $( "[data-test-id='phone'] input" ).setValue( "89261234567" );
         $( "[data-test-id='agreement']" ).click();
@@ -148,6 +148,5 @@ public class CardDeliveryNegetiveTests {
         $( "[data-test-id='phone'] span.input__sub" ).shouldHave( exactText( "Телефон указан неверно. Должно быть 11 цифр, например, +79012345678." ) ).shouldBe( Condition.visible );
 
     }
-
 
 }
